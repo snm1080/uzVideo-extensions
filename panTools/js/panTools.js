@@ -219,17 +219,7 @@ class QuarkUC {
         videoItem.data = element;
         videoItem.panType = this.panName;
         videoItem.name = element.name;
-        if (this.isQuark) {
-          if (flag.includes("原画")) {
-            videoItem.fromName = `${flag}.需要SVIP`;
-          }else{
-            videoItem.fromName = `${flag}.需要VIP`;
-          }
-        }else{
-          videoItem.fromName = flag;
-        }
         data.videos.push(videoItem);
-      }
     }
     return data;
   }
@@ -253,7 +243,7 @@ class QuarkUC {
     let playData;
     try {
       const { flag, shareId, shareToken, fileId, shareFileToken } = data;
-      if (flag.includes("原画")) {
+      if (false === this.isQuark) {
         playData = await this.getDownload(
           shareId,
           shareToken,
